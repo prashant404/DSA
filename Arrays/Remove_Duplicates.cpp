@@ -19,7 +19,7 @@ int removeDuplicates(vector<int>& arr, int n) {
 }
 
 int main() {
-    vector<int> arr = {1, 1, 2, 2, 3, 4, 5, 5, 6};
+    vector<int> arr = {1, 1, 2, 2, 3, 4, 5, 5, 6,8,8,9,9};
     int n = arr.size();
 
     cout << "Original array: ";
