@@ -30,3 +30,6 @@ for(int i=0;i<n;i++)
 
 cout<<checkSorted(n,arr);
 }
+
+//this follows logic that in sorted array the element at i+1 position will always be greater than ith element 
+//so we keep on checking traversing in array.

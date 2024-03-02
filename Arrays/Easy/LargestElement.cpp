@@ -4,9 +4,9 @@
 using namespace std;
 int findLargestElement(int arr[], int n) {
  
-  int max = arr[0];
+  int max = arr[0]; //set 1st element as Maximum
   for (int i = 0; i < n; i++) {
-    if (max < arr[i]) {
+    if (max < arr[i]) {  //compare with each element is max is less than current element then put max as current element.
       max = arr[i];
     }
   }
