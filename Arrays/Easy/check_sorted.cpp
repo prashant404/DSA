@@ -4,9 +4,9 @@ using namespace std;
 
 int checkSorted(int n,int arr[])
 {
-	for(int i=1;i<n;i++)
+	for(int i=0;i<n;i++)
 	{
-		if(arr[i]>arr[i-1])
+		if(arr[i+1]>arr[i])
 		{
 			
 		}
@@ -31,5 +31,5 @@ for(int i=0;i<n;i++)
 cout<<checkSorted(n,arr);
 }
 
-//this follows logic that in sorted array the element at i+1 position will always be greater than ith element 
-//so we keep on checking traversing in array.
+//this follows logic that in sorted array the element at i+1 position will always be greater than ith element
+// so we keep on checking traversing in array.
