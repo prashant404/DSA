@@ -38,53 +38,54 @@ If a candidate's count is more than ⌊ n/3 ⌋, it is added to the result vecto
 
 #include <iostream>
 #include <vector>
+using namespace std;
 
 class Solution {
 public:
     std::vector<int> majorityElement(std::vector<int>& nums) {
-        if (nums.empty()) return {};
-        
-        // Boyer-Moore Voting Algorithm
-        int candidate1 = 0, candidate2 = 0, count1 = 0, count2 = 0;
-        
-        // Step 1: Find candidates
-        for (int num : nums) {
-            if (num == candidate1) {
-                ++count1;
-            } else if (num == candidate2) {
-                ++count2;
-            } else if (count1 == 0) {
-                candidate1 = num;
-                count1 = 1;
-            } else if (count2 == 0) {
-                candidate2 = num;
-                count2 = 1;
+          int n1 = 0;
+        int n2 = 0;
+        int count1 = 0;
+        int count2 = 0;
+
+        if (nums.empty()) {
+            return {};
+        }
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (count1 == 0 && nums[i] != n2) {
+                count1++;
+                n1 = nums[i];
+            } else if (count2 == 0 && nums[i] != n1) {
+                count2++;
+                n2 = nums[i];
+            } else if (n1 == nums[i]) {
+                count1++;
+            } else if (n2 == nums[i]) {
+                count2++;
             } else {
-                --count1;
-                --count2;
+                count1--;
+                count2--;
             }
         }
-        
-        // Step 2: Verify candidates
+        vector<int> result;
+        int t = nums.size();
         count1 = 0;
         count2 = 0;
-        for (int num : nums) {
-            if (num == candidate1) {
-                ++count1;
-            } else if (num == candidate2) {
-                ++count2;
+        for (int i = 0; i < nums.size(); i++) {
+            if (n1 == nums[i]) {
+                count1++;
+            } else if (n2 == nums[i]) {
+                count2++;
             }
         }
-        
-        std::vector<int> result;
-        int n = nums.size();
-        if (count1 > n / 3) {
-            result.push_back(candidate1);
+
+        if (count1 > t / 3) {
+            result.push_back(n1);
         }
-        if (count2 > n / 3) {
-            result.push_back(candidate2);
+        if (count2 > t / 3) {
+            result.push_back(n2);
         }
-        
         return result;
     }
 };
